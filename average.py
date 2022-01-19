@@ -25,4 +25,7 @@ print(Average)
 
 
 
+
+print("Test1 =", test1,end=" ")
+print("Test =", test2)
 print("The average of 3 tests is", Average)
