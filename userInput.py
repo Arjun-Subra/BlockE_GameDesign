@@ -47,6 +47,19 @@ elif difficulty==3:
             elif guess > myNumber:
                 guess=int(input("Your guess was too high, please guess again: "))
     print("Victory")
+elif difficulty!= int:
+    print("You Have Discovered the Super Secret Difficulty \n\n\t Prepare Yourself", end='\n\n')
+    myNumber =random.randint(1,1000000)
+    guess=int(input("Guess a number between 1 and 1000000 "))
+    if guess == myNumber:
+                print("Victory")
+    else:
+        while guess != myNumber:
+            if guess < myNumber:
+                guess=int(input("Your guess was too low, please guess again: "))
+            elif guess > myNumber:
+                guess=int(input("Your guess was too high, please guess again: "))
+    print("Victory")
 else:
     print("You Have Discovered the Secret Difficulty \n\n\t Prepare Yourself", end='\n\n')
     myNumber =random.randint(1,1000)
