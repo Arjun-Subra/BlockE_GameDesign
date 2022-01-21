@@ -9,10 +9,10 @@ import os
 # and formatting the output
 os.system('cls')
 #Declare Variables
-v1=10
-v2=21
-v3=2.3
-v4=4
+v1=int(input())
+v2=int(input())
+v3=int(input())
+v4=int(input())
 # print("\" \t \\")
 #Calculate equation
 # print(2**4)
