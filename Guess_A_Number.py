@@ -22,11 +22,11 @@ while cont=="y":
         difficulty=int(input("Input 1 for option 1, 2 for option 2, and 3 for option 3: "))
 
     except ValueError:
-        print("You Have Discovered the Super Secret Difficulty \n\n\t You did this to youself by trying to break my code.", end='\n\n')
+        print("You Have Discovered the Punishment Difficulty \n\n\t You did this to youself by trying to break my code.", end='\n\n')
         myNumber =random.randint(1,1000000)
         guess=int(input("Guess a number between 1 and 1000000 "))
         if guess == myNumber:
-            print("You have completed your punishment.")
+            print("Your punishment is over.")
             cont=input("Do you want to play again? If yes type y if no type n: ")
         else:
             while guess != myNumber:
@@ -36,7 +36,7 @@ while cont=="y":
                 elif guess > myNumber:
                     guess=int(input("Your guess was too low, please guess again: "))
                     Attempts=Attempts+1
-        print("You have completed your punishment.")
+        print("Your punishment is over.")
         print("It took you", Attempts,"guesses to guest the right number.")
         cont=input("Do you want to play normally now? If yes type y if no type n: ")
 
