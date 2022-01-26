@@ -11,10 +11,12 @@ def menu():
     print("  Option #1 Random between 1-50    ")
     print("  Option #1 Random between 1-100   ")
     print("___________________________________")
+Attempts=0
 
 cont="y"
 
 while cont=="y":
+    Attempts=0
     menu()
     try:
         difficulty=int(input("Input 1 for option 1, 2 for option 2, and 3 for option 3: "))
@@ -29,10 +31,13 @@ while cont=="y":
         else:
             while guess != myNumber:
                 if guess < myNumber:
-                    guess=int(input("Your guess was too low, please guess again: "))
-                elif guess > myNumber:
                     guess=int(input("Your guess was too high, please guess again: "))
+                    Attempts=Attempts+1
+                elif guess > myNumber:
+                    guess=int(input("Your guess was too low, please guess again: "))
+                    Attempts=Attempts+1
         print("You have completed your punishment.")
+        print("It took you", Attempts,"guesses to guest the right number.")
         cont=input("Do you want to play normally now? If yes type y if no type n: ")
 
     if difficulty==1:
@@ -40,6 +45,7 @@ while cont=="y":
         guess=int(input("Guess a number between 1 and 10 "))
         if guess == myNumber:
                     print("Victory")
+                    print("It took you", Attempts,"guesses to guest the right number.")
                     cont=input("Do you want to play again? If yes type y if no type n: ")
                     if cont == "y":
                         print("If you want to try a secret difficulty input a number that is not 1, 2, or 3, when you are given the choice again")
@@ -47,9 +53,12 @@ while cont=="y":
             while guess != myNumber:
                 if guess < myNumber:
                     guess=int(input("Your guess was too low, please guess again: "))
+                    Attempts=Attempts+1
                 elif guess > myNumber:
                     guess=int(input("Your guess was too high, please guess again: "))
+                    Attempts=Attempts+1
         print("Victory")
+        print("It took you", Attempts,"guesses to guest the right number.")
         cont=input("Do you want to play again? If yes type y if no type n: ")
 
     elif difficulty==2:
@@ -57,6 +66,7 @@ while cont=="y":
         guess=int(input("Guess a number between 1 and 50 "))
         if guess == myNumber:
                     print("Victory")
+                    print("It took you", Attempts,"guesses to guest the right number.")
                     cont=input("Do you want to play again? If yes type y if no type n: ")
                     if cont == "y":
                         print("If you want to try a secret difficulty input a number that is not 1, 2, or 3, when you are given the choice again")
@@ -64,9 +74,12 @@ while cont=="y":
             while guess != myNumber:
                 if guess < myNumber:
                     guess=int(input("Your guess was too low, please guess again: "))
+                    Attempts=Attempts+1
                 elif guess > myNumber:
                     guess=int(input("Your guess was too high, please guess again: "))
+                    Attempts=Attempts+1
         print("Victory")
+        print("It took you", Attempts,"guesses to guest the right number.")
         cont=input("Do you want to play again? If yes type y if no type n: ")
         if cont == "y":
             print("If you want to try a secret difficulty input a number that is not 1, 2, or 3, when you are given the choice again")
@@ -76,6 +89,7 @@ while cont=="y":
         guess=int(input("Guess a number between 1 and 100 "))
         if guess == myNumber:
                     print("Victory")
+                    print("It took you", Attempts,"guesses to guest the right number.")
                     cont=input("Do you want to play again? If yes type y if no type n: ")
                     if cont == "y":
                         print("If you want to try a secret difficulty input a number that is not 1, 2, or 3, when you are given the choice again")
@@ -83,9 +97,12 @@ while cont=="y":
             while guess != myNumber:
                 if guess < myNumber:
                     guess=int(input("Your guess was too low, please guess again: "))
+                    Attempts=Attempts+1
                 elif guess > myNumber:
                     guess=int(input("Your guess was too high, please guess again: "))
+                    Attempts=Attempts+1
         print("Victory")
+        print("It took you", Attempts,"guesses to guest the right number.")
         cont=input("Do you want to play again? If yes type y if no type n: ")
         if cont == "y":
             print("If you want to try a secret difficulty input a number that is not 1, 2, or 3, when you are given the choice again")
@@ -96,12 +113,16 @@ while cont=="y":
         guess=int(input("Guess a number between 1 and 1000 "))
         if guess == myNumber:
                     print("Victory")
+                    print("It took you", Attempts,"guesses to guest the right number.")
                     cont=input("Do you want to play again? If yes type y if no type n: ")
         else:
             while guess != myNumber:
                 if guess < myNumber:
                     guess=int(input("Your guess was too low, please guess again: "))
+                    Attempts=Attempts+1
                 elif guess > myNumber:
                     guess=int(input("Your guess was too high, please guess again: "))
+                    Attempts=Attempts+1
         print("Victory")
+        print("It took you", Attempts,"guesses to guest the right number.")
         cont=input("Do you want to play again? If yes type y if no type n: ")
