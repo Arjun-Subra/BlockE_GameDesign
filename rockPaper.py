@@ -7,6 +7,7 @@
 #
 
 
+from multiprocessing.connection import wait
 import os,random
 
 cont="y"
@@ -25,6 +26,7 @@ while cont=="y":
     while Game:
         if user == "r":
             if cpu == 1:
+                cpu=random.randint(1,3)
                 user=input("Draw, the cpu also choose rock. Please pick again. To pick rock type \"r\", to pick paper type \"p\", and to pick scissors type \"s\"")
             elif cpu == 2:
                 print("The cpu choose paper. You Lose")
@@ -40,6 +42,7 @@ while cont=="y":
                 cont=input("Do you want to play again? If yes type \"y\" if no type \"n\"")
                 Game=False
             elif cpu == 2:
+                cpu=random.randint(1,3)
                 user=input("Draw, the cpu also choose paper. Please pick again. To pick rock type \"r\", to pick paper type \"p\", and to pick scissors type \"s\"")
             elif cpu == 3:
                 print("The cpu choose scissors. You Lose")
@@ -55,8 +58,8 @@ while cont=="y":
                 cont=input("Do you want to play again? If yes type \"y\" if no type \"n\"")
                 Game=False
             elif cpu == 3:
+                cpu=random.randint(1,3)
                 user=input("Draw, the cpu also choose scissors. Please pick again. To pick rock type \"r\", to pick paper type \"p\", and to pick scissors type \"s\"")
         else:
             print("That is not a valid choice Please choose again.")
             Game = False
-            os.system('cls')
