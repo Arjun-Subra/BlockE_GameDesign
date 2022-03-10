@@ -23,7 +23,7 @@ pygame.init()
 WIDTH=700
 HEIGHT=700
 check=True #for the while loop
-move=5 #pixels
+move=6 #pixels
 #square variables
 xs=20
 ys=20
@@ -60,19 +60,19 @@ while check:
         square.x -= move #substract 5 from the x value
     if keys[pygame.K_d] and square.x <WIDTH-wbox:
         square.x += move
-    if keys[pygame.K_w]:
+    if keys[pygame.K_w] and square.y >=move:
         square.y -= move
-    if keys[pygame.K_s]:
+    if keys[pygame.K_s] and square.y <HEIGHT-hbox:
         square.y += move   
 #Finish circle
     if keys[pygame.K_LEFT] and xc >=rad:
         xc -= move
-    if keys[pygame.K_RIGHT] and xc <=rad:
+    if keys[pygame.K_RIGHT] and xc <=WIDTH - rad:
         xc += move
     if keys[pygame.K_UP] and yc >=rad:
         yc -= move
-    if keys[pygame.K_DOWN] and yc <=rad:
-        yc += move #substract 5 from the x value
+    if keys[pygame.K_DOWN] and yc <=HEIGHT- rad:
+        yc += move
     pygame.draw.rect(screen, sq_color, square)
     pygame.draw.circle(screen, cr_color, (xc,yc), rad)
 
