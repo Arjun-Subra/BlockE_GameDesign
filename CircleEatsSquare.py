@@ -23,7 +23,7 @@ pygame.init()
 WIDTH=700
 HEIGHT=700
 check=True #for the while loop
-move=6 #pixels
+move=1 #pixels
 #square variables
 xs=20
 ys=20
@@ -42,12 +42,13 @@ pygame.display.set_caption('Circle eats Square')
 
 #define colors
 colors={'white':[255,255,255], 'red':[255,0,0], 'aqua':[102,153, 255],
-'orange':[255,85,0],'purple':[48,25,52],'navy':[5,31,64],'pink':[200,3,75]}
+'orange':[255,85,0],'purple':[48,25,52],'navy':[5,31,64],'pink':[200,3,75], 
+'mag':[255,0,255], 'green':[0,255,0], 'mag2':[255,50,255]}
 
 #Get colors
-background= colors.get('pink')
-sq_color=colors.get('navy')
-cr_color=colors.get('white')
+background= colors.get('mag')
+sq_color=colors.get('orange')
+cr_color=colors.get('green')
 while check:
     screen.fill(background)
     for case in pygame.event.get():
@@ -78,8 +79,3 @@ while check:
 
     pygame.display.update()
     pygame.time.delay(10)
-
-
-
-
-
