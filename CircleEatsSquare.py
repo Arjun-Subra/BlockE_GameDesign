@@ -13,8 +13,10 @@
 # K_d                   right square
 # K_w                   up square
 # K_s                   down square
+#K_SPAC3                square jump
 #initialize pygame
 import os, random, time, pygame
+from pickle import TRUE
 #initialize pygame
 pygame.init()
 
@@ -49,6 +51,10 @@ colors={'white':[255,255,255], 'red':[255,0,0], 'aqua':[102,153, 255],
 background= colors.get('mag')
 sq_color=colors.get('orange')
 cr_color=colors.get('green')
+
+MAX=10
+jumpCount=10
+JUMP=False
 while check:
     screen.fill(background)
     for case in pygame.event.get():
@@ -59,23 +65,41 @@ while check:
     keys=pygame.key.get_pressed() #this returns a list
     if keys[pygame.K_a] and square.x >=move:
         square.x -= move #substract 5 from the x value
-    if keys[pygame.K_d] and square.x <WIDTH-wbox:
+    if keys[pygame.K_d] and square.x <WIDTH-(wbox + move):
         square.x += move
-    if keys[pygame.K_w] and square.y >=move:
-        square.y -= move
-    if keys[pygame.K_s] and square.y <HEIGHT-hbox:
-        square.y += move   
+    #jumping part
+    if not JUMP:
+        if keys[pygame.K_w] and square.y >=move:
+            square.y -= move
+        if keys[pygame.K_s] and square.y <HEIGHT-(hbox + move):
+            square.y += move
+            if keys[pygame.K_SPACE]:
+                JUMP=TRUE
+    else:
+        if jumpCount >= -MAX:
+            square.y -= jumpCount*abs(jumpCount)/2
+            jumpCount-=1
+        else:
+            jumpCount=MAX
+            JUMP=False
 #Finish circle
     if keys[pygame.K_LEFT] and xc >=rad:
         xc -= move
-    if keys[pygame.K_RIGHT] and xc <=WIDTH - rad:
+    if keys[pygame.K_RIGHT] and xc <=WIDTH - (rad + move):
         xc += move
     if keys[pygame.K_UP] and yc >=rad:
         yc -= move
-    if keys[pygame.K_DOWN] and yc <=HEIGHT- rad:
+    if keys[pygame.K_DOWN] and yc <=HEIGHT- (rad+move):
         yc += move
+
+    checkCollide = square.collidepoint((xc,yc))
+    if checkCollide:
+        square.x=random.randint(wbox, WIDTH-wbox)
+        square.y=random.randint(hbox, HEIGHT-hbox)
+        rad+=move
+
     pygame.draw.rect(screen, sq_color, square)
     pygame.draw.circle(screen, cr_color, (xc,yc), rad)
 
     pygame.display.update()
-    pygame.time.delay(10)
+    pygame.time.delay(5)
