@@ -37,7 +37,7 @@ xc=random.randint(rad, WIDTH-rad)
 yc=random.randint(rad, HEIGHT-rad)
 #creating the rect object
 square=pygame.Rect(xs,ys,wbox,hbox)
-
+hitbox=pygame.Rect(xc-rad,yc-rad,2*rad,2*rad)
 #create screen
 screen=pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption('Circle eats Square')
@@ -45,13 +45,26 @@ pygame.display.set_caption('Circle eats Square')
 #define colors
 colors={'white':[255,255,255], 'red':[255,0,0], 'aqua':[102,153, 255],
 'orange':[255,85,0],'purple':[48,25,52],'navy':[5,31,64],'pink':[200,3,75], 
-'mag':[255,0,255], 'green':[0,255,0], 'mag2':[255,50,255]}
+'mag':[255,0,255], 'green':[0,255,0]} #'mag2':[255,50,255]}
 
+randColor=''
 #Get colors
 background= colors.get('mag')
-sq_color=colors.get('orange')
+# sq_color=colors.get('orange')
 cr_color=colors.get('green')
+hb_color=colors.get('mag')
 
+def changeColor():
+    global randColor
+    colorCheck=True
+    while colorCheck:
+        randColor=random.choice(list(colors))
+        if randColor==background:
+            randColor=random.choice(list(colors))
+        else:
+            colorCheck=False
+changeColor()
+sq_color=colors.get(randColor)
 MAX=10
 jumpCount=10
 JUMP=False
@@ -92,14 +105,20 @@ while check:
     if keys[pygame.K_DOWN] and yc <=HEIGHT- (rad+move):
         yc += move
 
-    checkCollide = square.collidepoint((xc,yc))
+    checkCollide = square.colliderect(hitbox)
     if checkCollide:
         square.x=random.randint(wbox, WIDTH-wbox)
         square.y=random.randint(hbox, HEIGHT-hbox)
         rad+=move
 
-    pygame.draw.rect(screen, sq_color, square)
-    pygame.draw.circle(screen, cr_color, (xc,yc), rad)
+        randColor=random.choice(list(colors))
+        changeColor()
+        sq_color=colors.get(randColor)
 
+
+    hitbox=pygame.Rect(xc-rad,yc-rad,2*rad,2*rad)
+    pygame.draw.rect(screen, sq_color, square)
+    pygame.draw.rect(screen, hb_color, hitbox)
+    pygame.draw.circle(screen, cr_color, (xc,yc), rad)
     pygame.display.update()
     pygame.time.delay(5)
