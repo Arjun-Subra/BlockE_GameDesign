@@ -16,6 +16,7 @@
 #K_SPAC3                square jump
 #initialize pygame
 import os, random, time, pygame
+from re import T
 from pickle import TRUE
 #initialize pygame
 pygame.init()
@@ -45,8 +46,9 @@ pygame.display.set_caption('Circle eats Square')
 #define colors
 colors={'white':[255,255,255], 'red':[255,0,0], 'aqua':[102,153, 255],
 'orange':[255,85,0],'purple':[48,25,52],'navy':[5,31,64],'pink':[200,3,75], 
-'mag':[255,0,255], 'green':[0,255,0]} #'mag2':[255,50,255]}
-
+'mag':[255,0,255], 'green':[0,255,0],'mag2':[255,50,255]}
+TFONT=pygame.font.SysFont('algerian',80)
+IFONT=pygame.font.SysFont('algerian',40)
 randColor=''
 #Get colors
 background= colors.get('mag')
@@ -68,12 +70,13 @@ sq_color=colors.get(randColor)
 MAX=10
 jumpCount=10
 JUMP=False
+
+
 while check:
     screen.fill(background)
     for case in pygame.event.get():
         if case.type==pygame.QUIT:
             check=False
-    
 
     keys=pygame.key.get_pressed() #this returns a list
     if keys[pygame.K_a] and square.x >=move:
