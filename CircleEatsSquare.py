@@ -217,7 +217,7 @@ def playGame():
             if keys[pygame.K_w]:
                 square.y -= move
             if keys[pygame.K_s]:
-                square.y += move   
+                square.y += move
             if keys[pygame.K_SPACE]:
                 JUMP=True
         else:
